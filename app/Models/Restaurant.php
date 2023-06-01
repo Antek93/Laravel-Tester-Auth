@@ -9,6 +9,11 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $table = 'restaurants';
+    // per specificare a quale tabella questo model è associata
+    // Normalmente l'ORM è in grado di riconoscere di quale tabella parliamo
+    // rispettando la convenzione di denominazione
+
     protected $fillable = [
         'nome',
         'address',
@@ -17,4 +22,9 @@ class Restaurant extends Model
         'prezzo_spedizione',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
